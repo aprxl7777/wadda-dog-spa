@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wadda Dog Spa | อาบน้ำ–ตัดแต่งขน สปาหมา</title>
+  <meta name="description" content="Wadda Dog Spa บริการอาบน้ำ ตัดแต่งขน สปาบำรุงขน ตัดเล็บ แปรงฟัน รับ–ส่งถึงบ้าน จองคิวผ่าน LINE OA ได้ทันที" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Wadda Dog Spa" />
+  <meta property="og:description" content="อาบน้ำ–ตัดแต่งขน สปาหมา จองคิวสะดวกผ่าน LINE OA" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1612538498450-64152afc9c3b?q=80&w=1600&auto=format&fit=crop" />
+  <meta property="og:url" content="https://wnj.github.io/wadda-dog-spa/" />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+
+  <style>
+    :root{
+      --bg:#dc4bd5;         /* โทนเข้มแบบ Netflix แต่ละมุน */
+      --card:#171d21;
+      --muted:#96a0b5;
+      --text:#e8eef9;
+      --brand:#ff4d67;      /* สีปุ่มหลัก */
+      --brand-2:#35d0ff;    /* สีไฮไลต์รอง */
+      --ring: 0 15px 60px rgba(255,77,103,.3);
+      --shadow: 0 10px 30px rgba(223, 119, 119, 0);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:linear-gradient(180deg,#0e1014 0%,#72d8f1 100%);color:var(--text);font-family:'Kanit',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif;scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Container */
+    .wrap{width:min(1200px,92%);margin-inline:auto}
+
+    /* Top bar */
+    .topbar{position:sticky;top:0;z-index:40;background:rgba(15,17,21,.75);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:700}
+    .brand i{font-size:1.5rem;color:var(--brand)}
+    .brand span{font-size:1.12rem;letter-spacing:.3px}
+    .navlinks{display:flex;gap:1rem}
+    .navlinks a{opacity:.85;padding:.45rem .8rem;border-radius:12px}
+    .navlinks a:hover{opacity:1;background:rgba(255,255,255,.06)}
+    .cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--brand);color:#fff;padding:.7rem 1.05rem;border-radius:14px;box-shadow:var(--ring);font-weight:600}
+    .cta:hover{transform:translateY(-2px)}
+    .menu-btn{display:none}
+
+    /* Hero */
+    .hero{position:relative;isolation:isolate}
+    .hero .bg{
+      position:absolute;inset:0;z-index:-1;opacity:.35;
+      background:url('https://images.unsplash.com/photo-1593134257782-e89567b7718a?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      filter:grayscale(20%) contrast(105%) brightness(85%);
+    }
+    .hero .gradient{position:absolute;inset:0;background:radial-gradient(800px 400px at 15% 10%,rgba(53,208,255,.35),transparent 55%),radial-gradient(600px 300px at 85% 20%,rgba(255,77,103,.35),transparent 55%)}
+    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;padding:5.5rem 0 4rem}
+    .badge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(91, 225, 246, 0.18);background:rgba(255,255,255,.06);padding:.35rem .6rem;border-radius:999px;font-size:.85rem;color:#cfe7ff}
+    .title{font-size:clamp(2rem,5vw,3.25rem);line-height:1.15;margin:.6rem 0 1rem;font-weight:700}
+    .sub{color:var(--muted);font-size:1.05rem;max-width:58ch}
+    .hero-cta{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.8rem}
+    .btn{display:inline-flex;align-items:center;gap:.55rem;border-radius:14px;padding:.8rem 1.05rem;font-weight:600}
+    .btn-primary{background:var(--brand);color:#fff;box-shadow:var(--ring)}
+    .btn-ghost{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.03);color:#e9efff}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);box-shadow:var(--shadow);border-radius:var(--radius);overflow:hidden}
+    .hero-card img{height:100%;object-fit:cover}
+
+    /* Services */
+    .section{padding:4.5rem 0}
+    .section h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin:0 0 1.4rem}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:1.2rem}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .card{background:var(--card);border-radius:var(--radius);border:1px solid rgba(255,255,255,.06);padding:1.2rem;box-shadow:var(--shadow)}
+    .card h3{margin:.2rem 0 .5rem}
+    .flex{display:flex;gap:.8rem;align-items:center}
+    .pill{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);font-size:.82rem;color:#d9e6ff}
+    .price{font-weight:700;font-size:1.1rem}
+
+    /* Pricing */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .price-card{position:relative}
+    .price-card .ribbon{position:absolute;right:1rem;top:1rem;background:var(--brand);color:#fff;padding:.25rem .6rem;border-radius:999px;font-size:.82rem}
+    .price-card ul{margin:0;padding:0 0 0 1.1rem;line-height:1.9}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:.6rem}
+    .gallery img{border-radius:12px;aspect-ratio:1/1;object-fit:cover;border:1px solid rgba(255,255,255,.06)}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem}
+    .contact .info{display:grid;gap:.8rem}
+    .contact .item{display:flex;gap:.65rem;align-items:flex-start}
+    .contact .item i{font-size:1.2rem;color:var(--brand)}
+    .map{min-height:320px;border:0;border-radius:var(--radius);overflow:hidden;filter:saturate(105%)}
+
+    /* Footer */
+    footer{border-top:1px solid rgba(255,255,255,.08);padding:2rem 0;color:#aeb9d4}
+
+    /* Utilities */
+    .hide{display:none}
+    .center{text-align:center}
+    .mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:1rem}.mt-4{margin-top:1.5rem}
+    .gap-1{gap:.25rem}.gap-2{gap:.5rem}.gap-3{gap:1rem}
+
+    /* Mobile */
+    @media (max-width:1000px){
+      .hero .wrap{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+    }
+    @media (max-width:860px){
+      .navlinks{display:none}
+      .menu-btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);padding:.55rem .8rem;border-radius:12px}
+      .drawer{position:fixed;inset:0 0 0 auto;width:min(86%,360px);background:rgba(18,20,25,.98);backdrop-filter:blur(8px);border-left:1px solid rgba(255,255,255,.06);transform:translateX(100%);transition:transform .25s ease;z-index:60;display:flex;flex-direction:column}
+      .drawer.open{transform:none}
+      .drawer a{padding:1rem 1.2rem;border-bottom:1px solid rgba(255,255,255,.06)}
+    }
+
+    /* Micro-interactions */
+    .hover-card{transition:transform .2s ease, box-shadow .2s ease}
+    .hover-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.45)}
+  </style>
+
+  <!-- Schema.org (LocalBusiness: PetGrooming) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PetGrooming",
+    "name": "Wadda Dog Spa",
+    "image": "https://images.unsplash.com/photo-1612538498450-64152afc9c3b?q=80&w=1600&auto=format&fit=crop",
+    "url": "https://yourdomain.example",
+    "telephone": "+66-88-888-8888",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ซอย17 ถนนนิมมานห์",
+      "addressLocality": "เชียงใหม่",
+      "postalCode": "50200",
+      "addressCountry": "TH"
+    },
+    "priceRange": "฿฿",
+    "openingHours": "Mo-Su 10:00-19:00",
+    "sameAs": ["https://www.facebook.com/yourpage","https://line.me/R/ti/p/@YOURID"]
+  }
+  </script>
+</head>
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="wrap nav">
+      <a href="#" class="brand" aria-label="Wadda Dog Spa">
+        <i class="ri-paw-fill" aria-hidden="true"></i>
+        <span>Wadda Dog Spa</span>
+      </a>
+      <nav class="navlinks" aria-label="เมนูหลัก">
+        <a href="#services">บริการ</a>
+        <a href="#pricing">แพ็กเกจ</a>
+       
+        <a href="#contact">ติดต่อ</a>
+      </nav>
+      <a href="https://line.me/R/ti/p/@054zwkdv" class="cta" target="_blank" rel="noopener" aria-label="จองคิวผ่าน LINE">
+        <i class="ri-line-line" aria-hidden="true"></i> จองคิว LINE
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-controls="mobileMenu" aria-expanded="false">
+        <i class="ri-menu-line"></i> เมนู
+      </button>
+    </div>
+  </div>
+  <aside class="drawer" id="mobileMenu" role="dialog" aria-label="เมนูบนมือถือ">
+    <a href="#services">บริการ</a>
+    <a href="#pricing">แพ็กเกจ</a>
+
+    <a href="#contact">ติดต่อ</a>
+    <a href="https://line.me/R/ti/p/@054zwkdv" target="_blank" rel="noopener">จองคิว LINE</a>
+  </aside>
+
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <div class="bg" aria-hidden="true"></div>
+    <div class="gradient" aria-hidden="true"></div>
+    <div class="wrap">
+      <div>
+        <span class="badge"><i class="ri-sparkling-2-fill"></i> สะอาด อ่อนโยน ปลอดภัย</span>
+        <h1 class="title">อาบน้ำ–ตัดแต่งขน สปาหมาแบบมืออาชีพ</h1>
+        <p class="sub">ใช้ผลิตภัณฑ์ออร์แกนิกสำหรับสุนัขโดยเฉพาะ ห้องกรูมมิ่งปลอดไรฝุ่น ดูแลโดยช่างประสบการณ์กว่า 5 ปี พร้อมบริการรับ–ส่งถึงบ้าน</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://line.me/R/ti/p/@054zwkdv" target="_blank" rel="noopener"><i class="ri-send-plane-fill"></i> จองคิวผ่าน LINE</a>
+          <a class="btn btn-ghost" href="#pricing"><i class="ri-price-tag-3-line"></i> ดูราคา</a>
+        </div>
+        <div class="mt-3 flex gap-3 muted">
+          <span class="pill"><i class="ri-shield-check-line"></i> ฆ่าเชื้ออุปกรณ์ทุกครั้ง</span>
+          <span class="pill"><i class="ri-home-6-line"></i> รับ–ส่งถึงบ้าน</span>
+          <span class="pill"><i class="ri-time-line"></i> เปิด 10:00–19:00</span>
+        </div>
+      </div>
+      <div class="hero-card hover-card">
+        <img src="https://media.istockphoto.com/id/1277453154/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%AA%E0%B8%B8%E0%B8%99%E0%B8%B1%E0%B8%82%E0%B9%82%E0%B8%81%E0%B8%A5%E0%B9%80%E0%B8%94%E0%B9%89%E0%B8%99%E0%B8%A3%E0%B8%B5%E0%B8%97%E0%B8%A3%E0%B8%B5%E0%B8%9F%E0%B9%80%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%83%E0%B8%99%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%81%E0%B8%A3%E0%B8%B9%E0%B8%A1%E0%B8%A1%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B8%81%E0%B9%8D%E0%B8%B2%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%AD%E0%B8%B2%E0%B8%9A%E0%B8%99%E0%B9%89%E0%B9%8D%E0%B8%B2.jpg?s=2048x2048&w=is&k=20&c=n0OluD-GQsKY2dnH1_5_YvrbCL8p3dprI0bCv39CQzU=" alt="สุนัขกำลังทำสปา" loading="eager" width="700" height="520">
+      </div>
+    </div>
+  </header>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="wrap">
+      <h2>บริการของเรา</h2>
+      <p class="muted">เลือกแพ็กเกจให้เหมาะกับน้องหมา หรือคุยรายละเอียดกับแอดมินได้เลย</p>
+      <div class="grid grid-3 mt-3">
+        <article class="card hover-card">
+          <div class="flex"><i class="ri-shower-line"></i><h3>อาบน้ำ–เป่าขน</h3></div>
+          <p class="muted mt-1">ทำความสะอาดล้ำลึก แห้งไว ไม่มีกลิ่นอับ</p>
+          <p class="price mt-2">เริ่มต้น 350฿</p>
+        </article>
+        <article class="card hover-card">
+          <div class="flex"><i class="ri-scissors-2-line"></i><h3>ตัดแต่งขนครบเซ็ต</h3></div>
+          <p class="muted mt-1">ทรงสวยเข้ากับสายพันธุ์ ดูแลง่าย</p>
+          <p class="price mt-2">เริ่มต้น 650฿</p>
+        </article>
+        <article class="card hover-card">
+          <div class="flex"><i class="ri-heart-3-line"></i><h3>สปาบำรุงขน</h3></div>
+          <p class="muted mt-1">มาส์กขน นวดรีแลกซ์ ลดคัน ผิวชุ่มชื้น</p>
+          <p class="price mt-2">เริ่มต้น 490฿</p>
+        </article>
+      </div>
+
+      <div class="grid grid-3 mt-3">
+        <article class="card hover-card">
+          <div class="flex"><i class="ri-brush-4-line"></i><h3>สางขนตาย & กำจัดเห็บหมัด</h3></div>
+          <p class="muted mt-1">อ่อนโยน ปลอดภัยสำหรับผิวแพ้ง่าย</p>
+        </article>
+        <article class="card hover-card">
+          <div class="flex"><i class="ri-mental-health-line"></i><h3>ทำความสะอาดหู & ตัดเล็บ</h3></div>
+          <p class="muted mt-1">ลดเสี่ยงการติดเชื้อและอาการคัน</p>
+        </article>
+        <article class="card hover-card">
+          <div class="flex"><i class="ri-car-line"></i><h3>รับ–ส่งถึงบ้าน</h3></div>
+          <p class="muted mt-1">สะดวก ปลอดภัย มี GPS ติดตาม</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="section">
+    <div class="wrap">
+      <h2>แพ็กเกจ & ราคา</h2>
+      <p class="muted">ราคาจะแตกต่างตามขนาดและสภาพขน — สอบถามประเมินฟรีทาง LINE</p>
+      <div class="pricing mt-3">
+        <article class="card price-card hover-card">
+          <div class="ribbon">ยอดนิยม</div>
+          <h3>Basic Clean</h3>
+          <p class="price">เริ่ม 350฿</p>
+          <ul class="muted">
+            <li>อาบน้ำ–เป่าขน</li>
+            <li>แปรงขนพื้นฐาน</li>
+            <li>เช็ดหู & ทำความสะอาดเท้า</li>
+          </ul>
+          <a class="btn btn-primary mt-3" href="https://line.me/R/ti/p/@054zwkdv" target="_blank" rel="noopener">จองแพ็กเกจนี้</a>
+        </article>
+        <article class="card price-card hover-card">
+          <h3>Grooming Pro</h3>
+          <p class="price">เริ่ม 650฿</p>
+          <ul class="muted">
+            <li>อาบน้ำ–ตัดแต่งทรง</li>
+            <li>ตัดเล็บ–ทำความสะอาดหู</li>
+            <li>สางขนตาย</li>
+          </ul>
+          <a class="btn btn-primary mt-3" href="https://line.me/R/ti/p/@054zwkdv" target="_blank" rel="noopener">จองแพ็กเกจนี้</a>
+        </article>
+        <article class="card price-card hover-card">
+          <h3>Spa Deluxe</h3>
+          <p class="price">เริ่ม 1,090฿</p>
+          <ul class="muted">
+            <li>มาส์กบำรุงขนพรีเมียม</li>
+            <li>นวดรีแลกซ์ 15 นาที</li>
+            <li>โอโซนฆ่าเชื้อเบา ๆ</li>
+          </ul>
+          <a class="btn btn-primary mt-3" href="https://line.me/R/ti/p/@054zwkdv" target="_blank" rel="noopener">จองแพ็กเกจนี้</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="wrap contact">
+      <div>
+        <h2>ติดต่อเรา</h2>
+        <p class="muted">ทัก LINE เพื่อสอบถามราคา–คิวว่าง หรือนัดรับ–ส่งได้เลย</p>
+        <div class="info mt-3">
+          <div class="item"><i class="ri-map-pin-2-line"></i><div>ถนนนิมมานห์ ซอย17 เชียงใหม่ 50200</div></div>
+          <div class="item"><i class="ri-phone-line"></i><div>โทร: 088-888-8888 (10:00–19:00)</div></div>
+          <div class="item"><i class="ri-line-line"></i><div>LINE OA: <a href="https://line.me/R/ti/p/@054zwkdv" target="_blank" rel="noopener">@054zwkdv</a></div></div>
+          <div class="item"><i class="ri-time-line"></i><div>เปิดบริการทุกวัน 10:00–19:00</div></div>
+          <div class="mt-3">
+            <a class="btn btn-primary" href="https://line.me/R/ti/p/@054zwkdv" target="_blank" rel="noopener"><i class="ri-message-3-line"></i> แชตกับแอดมิน</a>
+            <a class="btn btn-ghost" href="#home"><i class="ri-arrow-up-line"></i> กลับขึ้นด้านบน</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <iframe class="map" title="แผนที่ไปยัง Wadda Dog Spa" loading="lazy"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3776.2203427755146!2d98.96246611538434!3d18.79624496477633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30da3a95a1e95f0d%3A0xbba3eb8c95f7e1d1!2sNimmanhaemin%20Rd%20Soi%2017%2C%20Chiang%20Mai!5e0!3m2!1sth!2sth!4v1691840400000!5m2!1sth!2sth"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div>© <span id="year"></span> Wadda Dog Spa • All rights reserved</div>
+      <div class="muted">นโยบายความเป็นส่วนตัว • เงื่อนไขการใช้บริการ</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile drawer
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Close drawer on link click (mobile)
+    mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> mobileMenu.classList.remove('open')));
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lazy smooth scroll for internal links (desktop)
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href');
+        if(id && id !== '#'){
+          const el = document.querySelector(id);
+          if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+        }
+      })
+    })
+  </script>
+</body>
+</html>
